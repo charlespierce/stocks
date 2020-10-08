@@ -1,4 +1,4 @@
-const { StocksError } = require('../error');
+const { getPrices } = require('../api');
 
 module.exports = {
     command: 'get <symbols..>',
@@ -7,7 +7,10 @@ module.exports = {
     handler,
 };
 
-function handler(argv) {
-    throw new StocksError('Fake Error', 'Re-run to see what happens');
-    console.log('Running get', argv.symbols);
+// TODO: Format output as a table with colors (shared with default)
+// TODO: If count of prices is less than requested, show note about invalid symbols being omitted
+async function handler(argv) {
+    const prices = await getPrices(argv.symbols);
+
+    console.info(prices);
 }

@@ -23,6 +23,13 @@
   "dependencies": {
     "chalk": "^4.1.0",
     "configstore": "^5.0.1",
+    "node-fetch": "^2.6.1",
     "yargs": "^16.0.3"
+  },
+  "engines": {
+    "node": ">= 10"
+  },
+  "volta": {
+    "node": "12.19.0"
   }
 }
