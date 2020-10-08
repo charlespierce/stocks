@@ -1,5 +1,6 @@
 const yargs = require('yargs');
 const { errorHandler, StocksError } = require('./error');
+const { writeError } = require('./style');
 
 try {
     yargs
@@ -23,7 +24,7 @@ try {
         .argv;
 } catch (err) {
     if (err instanceof StocksError) {
-        console.error(err.toMessage());
+        writeError(err.toMessage());
         process.exit(1);
     } else {
         throw err;

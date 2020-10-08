@@ -1,4 +1,4 @@
-const chalk = require('chalk');
+const { writeError } = require('./style');
 
 class StocksError {
     constructor(message, cta) {
@@ -19,11 +19,11 @@ class StocksError {
 
 function errorHandler(msg, err) {
     if (err instanceof StocksError) {
-        console.error(err.toMessage());
+        writeError(err.toMessage());
     } else if (err instanceof Error) {
         console.error(err.toString());
     } else {
-        console.error(`${chalk.red.bold('error:')} ${msg}\n\nPass --help to show usage information`);
+        writeError(`${msg}\n\nPass --help to show usage information`);
     }
 
     process.exit(1);

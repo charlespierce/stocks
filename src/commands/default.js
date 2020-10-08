@@ -1,7 +1,7 @@
 const { getFavorites } = require('../store');
 const { getPrices } = require('../api');
 const { createTable } = require('../table');
-const chalk = require('chalk');
+const { writeNote } = require('../style');
 
 module.exports = {
     command: '$0',
@@ -16,11 +16,15 @@ async function handler() {
     let favorites = getFavorites();
 
     if (!favorites.length) {
-        console.info(`${chalk.cyan('note:')} No favorite stocks set, showing popular stocks instead`);
+        writeNote('No favorite stocks set, showing popular stocks instead');
         favorites = FAANG_SYMBOLS;
     }
 
     const prices = await getPrices(favorites);
 
     console.info(createTable(prices));
+
+    if (prices.length !== favorites.length) {
+        writeNote('Invalid stock symbols have been omitted');
+    }
 }
