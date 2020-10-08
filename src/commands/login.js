@@ -1,6 +1,10 @@
-exports.command = 'login <token>';
-exports.desc = 'Login with your IEX Cloud API Token';
-exports.builder = {};
-exports.handler = function (argv) {
-    console.log('Running login', argv.token);
+module.exports = {
+    command: 'login <token>',
+    desc: 'Login with your IEX Cloud API Token',
+    builder: {},
+    handler,
 };
+
+function handler(argv) {
+    console.log('Running login', argv.token);
+}

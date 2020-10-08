@@ -1,6 +1,6 @@
-exports.command = 'favorite <command>';
-exports.desc = 'Manage your favorite stocks';
-exports.builder = function (yargs) {
-    return yargs.commandDir('favorite');
+module.exports = {
+    command: 'favorite <command>',
+    desc: 'Manage your favorite stocks',
+    builder: (yargs) => yargs.commandDir('favorite'),
+    handler: () => { },
 };
-exports.handler = function (argv) { };

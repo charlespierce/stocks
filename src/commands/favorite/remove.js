@@ -1,6 +1,10 @@
-exports.command = 'remove <symbols..>';
-exports.desc = 'Remove stocks from your list of favorites';
-exports.builder = {};
-exports.handler = function (argv) {
-    console.log('Running favorite remove', argv.symbols);
+module.exports = {
+    command: 'remove <symbols..>',
+    desc: 'Remove stocks from your list of favorites',
+    builder: {},
+    handler,
 };
+
+function handler(argv) {
+    console.log('Running favorite remove', argv.symbols);
+}

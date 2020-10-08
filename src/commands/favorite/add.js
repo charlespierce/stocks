@@ -1,6 +1,10 @@
-exports.command = 'add <symbols..>';
-exports.desc = 'Add stocks to your list of favorites';
-exports.builder = {};
-exports.handler = function (argv) {
-    console.log('Running favorite add', argv.symbols);
+module.exports = {
+    command: 'add <symbols..>',
+    desc: 'Add stocks to your list of favorites',
+    builder: {},
+    handler,
 };
+
+function handler(argv) {
+    console.log('Running favorite add', argv.symbols);
+}

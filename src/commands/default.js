@@ -1,6 +1,10 @@
-exports.command = '$0';
-exports.desc = 'Show price data for your favorite stocks';
-exports.builder = {};
-exports.handler = function (argv) {
-    console.log(`Running default command`);
+module.exports = {
+    command: '$0',
+    desc: 'Show price data for your favorite stocks',
+    builder: {},
+    handler,
 };
+
+function handler(argv) {
+    console.log('Running default command');
+}
