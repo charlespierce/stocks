@@ -1,0 +1,26 @@
+{
+  "name": "stocks",
+  "version": "1.0.0",
+  "description": "CLI Tool for Showing Stock Prices",
+  "main": "src/index.js",
+  "bin": {
+    "stocks": "bin/stocks.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/charlespierce/stocks.git"
+  },
+  "keywords": [
+    "cli",
+    "stocks"
+  ],
+  "author": "Charles Pierce <cpierce.grad@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/charlespierce/stocks/issues"
+  },
+  "homepage": "https://github.com/charlespierce/stocks#readme",
+  "dependencies": {
+    "yargs": "^16.0.3"
+  }
+}
