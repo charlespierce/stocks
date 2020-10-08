@@ -1,4 +1,5 @@
 const { getPrices } = require('../api');
+const { createTable } = require('../table');
 
 module.exports = {
     command: 'get <symbols..>',
@@ -7,10 +8,9 @@ module.exports = {
     handler,
 };
 
-// TODO: Format output as a table with colors (shared with default)
 // TODO: If count of prices is less than requested, show note about invalid symbols being omitted
 async function handler(argv) {
     const prices = await getPrices(argv.symbols);
 
-    console.info(prices);
+    console.info(createTable(prices));
 }

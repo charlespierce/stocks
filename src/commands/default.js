@@ -1,5 +1,6 @@
 const { getFavorites } = require('../store');
 const { getPrices } = require('../api');
+const { createTable } = require('../table');
 const chalk = require('chalk');
 
 module.exports = {
@@ -11,7 +12,6 @@ module.exports = {
 
 const FAANG_SYMBOLS = ['FB', 'AAPL', 'AMZN', 'NFLX', 'GOOG'];
 
-// TODO: Format output as a table with colors
 async function handler() {
     let favorites = getFavorites();
 
@@ -22,5 +22,5 @@ async function handler() {
 
     const prices = await getPrices(favorites);
 
-    console.info(prices);
+    console.info(createTable(prices));
 }
