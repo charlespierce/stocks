@@ -19,9 +19,11 @@ const percentFormatter = Intl.NumberFormat(undefined, { style: 'percent', minimu
 async function getPrices(symbols, options) {
     // Show a spinner while the API call is in-flight
     const spinner = new Spinner('Fetching stock price data');
+    const url = buildPriceUrl(symbols, options);
+
     try {
         spinner.start();
-        let res = await fetch(buildPriceUrl(symbols, options));
+        let res = await fetch(url);
         let json = await res.json();
 
         return Object.values(json).map(data => parseQuote(data.quote));
@@ -64,8 +66,16 @@ function buildPriceUrl(symbols, options) {
         baseUrl += '/';
     }
 
-    // TODO: If no token is available, show a helpful error message
     const token = options.token || getToken();
+
+    if (!token) {
+        // If the token isn't available, we know the API request will fail
+        throw new StocksError(
+            'No IEX Cloud API token available to fetch stock data',
+            `Store your API token using \`stocks login <token>\`.
+See https://iexcloud.io/ for more info and to obtain a token.`
+        );
+    }
 
     return `${baseUrl}stock/market/batch?symbols=${symbols.join(',')}&types=quote&token=${token}`;
 }
