@@ -15,7 +15,7 @@ function getStore() {
     if (!store) {
         try {
             store = new Configstore('stocks');
-        } catch (err) {
+        } catch {
             throw new StocksError('Could not load local configuration');
         }
     }
@@ -27,7 +27,7 @@ function setValue(key, value) {
     let store = getStore();
     try {
         store.set(key, value);
-    } catch (err) {
+    } catch {
         throw new StocksError('Could not save local configuration');
     }
 }

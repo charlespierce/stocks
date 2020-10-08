@@ -16,7 +16,7 @@ async function getPrices(symbols) {
         let json = await res.json();
 
         return Object.values(json).map(data => parseQuote(data.quote));
-    } catch (err) {
+    } catch {
         throw new StocksError('Unable to fetch stock data', 'Please verify your internet connection and confirm the stock symbols are correct');
     }
 }
