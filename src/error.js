@@ -15,13 +15,19 @@ class StocksError {
 
         return message;
     }
-};
+}
 
-function errorHandler(msg) {
-    console.error(`${chalk.red.bold('error:')} ${msg}\n\nPass --help to show usage information`);
+function errorHandler(msg, err) {
+    if (err instanceof StocksError) {
+        console.error(err.toMessage());
+    } else if (err instanceof Error) {
+        console.error(err.toString());
+    } else {
+        console.error(`${chalk.red.bold('error:')} ${msg}\n\nPass --help to show usage information`);
+    }
 
     process.exit(1);
-};
+}
 
 module.exports = {
     errorHandler,

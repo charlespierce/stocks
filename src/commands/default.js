@@ -1,5 +1,6 @@
 const { getFavorites } = require('../store');
 const { getPrices } = require('../api');
+const chalk = require('chalk');
 
 module.exports = {
     command: '$0',
@@ -8,10 +9,17 @@ module.exports = {
     handler,
 };
 
-// TODO: Show message if no favorites are set, fetch FAANG instead
+const FAANG_SYMBOLS = ['FB', 'AAPL', 'AMZN', 'NFLX', 'GOOG'];
+
 // TODO: Format output as a table with colors
 async function handler() {
-    const favorites = getFavorites();
+    let favorites = getFavorites();
+
+    if (!favorites.length) {
+        console.info(`${chalk.cyan('note:')} No favorite stocks set, showing popular stocks instead`);
+        favorites = FAANG_SYMBOLS;
+    }
+
     const prices = await getPrices(favorites);
 
     console.info(prices);
