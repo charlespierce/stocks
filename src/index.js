@@ -5,16 +5,6 @@ const { writeError } = require('./style');
 try {
     yargs
         .scriptName('stocks')
-        .option('token', {
-            alias: 't',
-            type: 'string',
-            description: 'IEX Cloud API Token to use to fetch data',
-        })
-        .option('url', {
-            alias: 'u',
-            type: 'string',
-            description: 'Base URL to use for API requests',
-        })
         .help('help', 'Show this help and exit')
         .version('version', 'Show version and exit')
         .strict()

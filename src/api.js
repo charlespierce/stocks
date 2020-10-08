@@ -10,11 +10,11 @@ module.exports = {
 const priceFormatter = Intl.NumberFormat(undefined, { style: 'currency', currency: 'USD' });
 const percentFormatter = Intl.NumberFormat(undefined, { style: 'percent', minimumFractionDigits: 2 });
 
-async function getPrices(symbols) {
+async function getPrices(symbols, options) {
     const spinner = new Spinner('Fetching stock price data');
     try {
         spinner.start();
-        let res = await fetch(buildPriceUrl(symbols));
+        let res = await fetch(buildPriceUrl(symbols, options));
         let json = await res.json();
 
         return Object.values(json).map(data => parseQuote(data.quote));
@@ -40,6 +40,13 @@ function parseQuote(quote) {
 }
 
 // TODO: Update to use the live api instead of the sandbox
-function buildPriceUrl(symbols) {
-    return `https://sandbox.iexapis.com/v1/stock/market/batch?symbols=${symbols.join(',')}&types=quote&token=${getToken()}`;
+function buildPriceUrl(symbols, options) {
+    let baseUrl = options.url || 'https://sandbox.iexapis.com/v1/';
+    if (!baseUrl.endsWith('/')) {
+        baseUrl += '/';
+    }
+
+    const token = options.token || getToken();
+
+    return `${baseUrl}stock/market/batch?symbols=${symbols.join(',')}&types=quote&token=${token}`;
 }

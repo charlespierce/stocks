@@ -6,13 +6,25 @@ const { writeNote } = require('../style');
 module.exports = {
     command: '$0',
     desc: 'Show price data for your favorite stocks',
-    builder: {},
+    builder,
     handler,
 };
 
 const FAANG_SYMBOLS = ['FB', 'AAPL', 'AMZN', 'NFLX', 'GOOG'];
 
-async function handler() {
+function builder(yargs) {
+    return yargs.option('token', {
+        alias: 't',
+        type: 'string',
+        description: 'IEX Cloud API Token to use to fetch data',
+    }).option('url', {
+        alias: 'u',
+        type: 'string',
+        description: 'Base URL to use for API requests',
+    });
+}
+
+async function handler(argv) {
     let favorites = getFavorites();
 
     if (!favorites.length) {
@@ -20,7 +32,7 @@ async function handler() {
         favorites = FAANG_SYMBOLS;
     }
 
-    const prices = await getPrices(favorites);
+    const prices = await getPrices(favorites, argv);
 
     console.info(createTable(prices));
 
