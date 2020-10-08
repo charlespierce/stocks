@@ -3,6 +3,7 @@ module.exports = {
     node: true,
     commonjs: true,
     es2021: true,
+    mocha: true,
   },
   plugins: ["mocha"],
   extends: ["eslint:recommended", "prettier", "plugin:mocha/recommended"],

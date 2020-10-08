@@ -109,9 +109,9 @@ API token removed!
 
 This CLI tool is very early stages, and there are a lot of areas for improvement.
 
-### End-to-end tests
+### Expand test coverage
 
-Currently, we only have a suite of unit and acceptance tests. To ensure that it works fully, we should set up end-to-end tests using a testing sandbox account against the actual API.
+Currently, `stocks` only has a partial suite of unit and acceptance tests. Those tests should be expanded to cover more of the functionality. Additionally, there should be end-to-end tests using a testing sandbox account to test the full behavior of the tool.
 
 ### Help output customization
 
