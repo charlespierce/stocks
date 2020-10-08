@@ -29,7 +29,7 @@ function createTable(quotes) {
       : chalk.red(quote.percentChange),
   ]);
 
-  for (row of rows) {
+  for (const row of rows) {
     table.push(row);
   }
 
