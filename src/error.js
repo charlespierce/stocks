@@ -1,3 +1,5 @@
+const chalk = require('chalk');
+
 class StocksError {
     constructor(message, cta) {
         this.message = message;
@@ -5,7 +7,7 @@ class StocksError {
     }
 
     toMessage() {
-        let message = this.message;
+        let message = `${chalk.red.bold('error:')} ${this.message}`;
 
         if (this.cta) {
             message += `\n\n${this.cta}`;
@@ -16,7 +18,7 @@ class StocksError {
 };
 
 function errorHandler(msg) {
-    console.error(`${msg}\n\nPass --help to show usage information`);
+    console.error(`${chalk.red.bold('error:')} ${msg}\n\nPass --help to show usage information`);
 
     process.exit(1);
 };
