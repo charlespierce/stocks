@@ -37,7 +37,7 @@
     "node": ">= 10"
   },
   "volta": {
-    "node": "12.19.0"
+    "node": "10.0.0"
   },
   "devDependencies": {
     "eslint": "^7.10.0",
