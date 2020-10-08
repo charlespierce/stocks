@@ -4,7 +4,7 @@ CLI tool for getting quick stock prices. Data provided by [IEX Cloud](https://ie
 
 ## Installation
 
-`stocks` requires [Node.js](https://nodejs.org) version 10 or above. To install, run:
+`stocks` requires [Node.js](https://nodejs.org) version 10.13.0 or above. To install, run:
 
 ```
 npm install --global https://github.com/charlespierce/stocks
