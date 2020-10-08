@@ -22,6 +22,7 @@
   "homepage": "https://github.com/charlespierce/stocks#readme",
   "dependencies": {
     "chalk": "^4.1.0",
+    "configstore": "^5.0.1",
     "yargs": "^16.0.3"
   }
 }
