@@ -1,3 +1,5 @@
+const { setToken } = require('../store');
+
 module.exports = {
     command: 'login <token>',
     desc: 'Login with your IEX Cloud API Token',
@@ -6,5 +8,7 @@ module.exports = {
 };
 
 function handler(argv) {
-    console.log('Running login', argv.token);
+    setToken(argv.token);
+
+    console.info('API token saved!');
 }

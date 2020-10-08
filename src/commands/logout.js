@@ -1,3 +1,5 @@
+const { removeToken } = require('../store');
+
 module.exports = {
     command: 'logout',
     desc: 'Logout and forget your IEX Cloud API Token',
@@ -5,6 +7,8 @@ module.exports = {
     handler,
 };
 
-function handler(argv) {
-    console.log('Running Logout');
+function handler() {
+    removeToken();
+
+    console.info('API token removed!');
 }
