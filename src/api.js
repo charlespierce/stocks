@@ -61,7 +61,7 @@ function parseQuote(quote) {
  */
 function buildPriceUrl(symbols, options) {
     // TODO: Update to use the live api instead of the sandbox
-    let baseUrl = options.url || 'https://sandbox.iexapis.com/v1/';
+    let baseUrl = options.url || 'https://cloud.iexapis.com/v1/';
     if (!baseUrl.endsWith('/')) {
         baseUrl += '/';
     }
