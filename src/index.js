@@ -3,6 +3,7 @@ const { errorHandler, StocksError } = require('./error');
 const { writeError } = require('./style');
 
 try {
+    // Define the top-level CLI settings for yargs, then parse and execute commands
     yargs
         .scriptName('stocks')
         .help('help', 'Show this help and exit')

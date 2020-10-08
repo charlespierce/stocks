@@ -7,6 +7,11 @@ module.exports = {
     handler,
 };
 
+/**
+ * Handler for the `favorites list` command
+ * 
+ * Fetches the user's favorite stocks from the local store and displays them
+ */
 function handler() {
     const favoriteList = getFavorites();
     if (favoriteList.length) {

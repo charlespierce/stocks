@@ -10,7 +10,14 @@ module.exports = {
 const priceFormatter = Intl.NumberFormat(undefined, { style: 'currency', currency: 'USD' });
 const percentFormatter = Intl.NumberFormat(undefined, { style: 'percent', minimumFractionDigits: 2 });
 
+/**
+ * Fetch price information about a set of stocks from the IEX Cloud API
+ * 
+ * @param {string[]} symbols Stock symbols for which to fetch price data
+ * @param {{url?: string, token?: string}} options Options to customize the api url and token
+ */
 async function getPrices(symbols, options) {
+    // Show a spinner while the API call is in-flight
     const spinner = new Spinner('Fetching stock price data');
     try {
         spinner.start();
@@ -25,6 +32,11 @@ async function getPrices(symbols, options) {
     }
 }
 
+/**
+ * Parse API response into a more usable format
+ * 
+ * @param {object} quote 
+ */
 function parseQuote(quote) {
     const diff = quote.latestPrice - quote.previousClose;
     const diffRatio = (diff / quote.previousClose);
@@ -39,13 +51,20 @@ function parseQuote(quote) {
     };
 }
 
-// TODO: Update to use the live api instead of the sandbox
+/**
+ * Build the API URL to request stock information
+ * 
+ * @param {string[]} symbols Stock symbols for which to fetch price data
+ * @param {{url?: string, token?: string}} options Options to customize the api url and token
+ */
 function buildPriceUrl(symbols, options) {
+    // TODO: Update to use the live api instead of the sandbox
     let baseUrl = options.url || 'https://sandbox.iexapis.com/v1/';
     if (!baseUrl.endsWith('/')) {
         baseUrl += '/';
     }
 
+    // TODO: If no token is available, show a helpful error message
     const token = options.token || getToken();
 
     return `${baseUrl}stock/market/batch?symbols=${symbols.join(',')}&types=quote&token=${token}`;

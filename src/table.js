@@ -5,6 +5,11 @@ module.exports = {
     createTable,
 };
 
+/**
+ * Format stock quote data into a pretty table for display
+ * 
+ * @param {Array} quotes Array of quotes returned from the `getPrices` function in the `api` module
+ */
 function createTable(quotes) {
     const table = new Table({
         head: ['Symbol', 'Previous', 'Current', 'Change', '%'],

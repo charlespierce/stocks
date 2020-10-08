@@ -7,6 +7,13 @@ module.exports = {
     handler,
 };
 
+/**
+ * Handler for the `logout` command
+ * 
+ * Removes the stored API token from the local store, so it cannot be used any more
+ * 
+ * @param argv Parsed command-line arguments, provided by yargs
+ */
 function handler() {
     removeToken();
 
