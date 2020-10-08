@@ -7,7 +7,7 @@ class StocksError {
     }
 
     toMessage() {
-        let message = `${chalk.red.bold('error:')} ${this.message}`;
+        let message = this.message;
 
         if (this.cta) {
             message += `\n\n${this.cta}`;
