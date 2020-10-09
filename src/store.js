@@ -22,7 +22,11 @@ let store;
 function getStore() {
   if (!store) {
     try {
-      store = new Configstore("stocks");
+      if (process.env._STOCKS_TEST_CONFIG) {
+        store = new Configstore(process.env._STOCKS_TEST_CONFIG);
+      } else {
+        store = new Configstore("stocks");
+      }
     } catch {
       throw new StocksError("Could not load local configuration");
     }

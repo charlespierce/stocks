@@ -19,6 +19,6 @@ function handler() {
   } else {
     console.info(`You don't have any favorite stocks!
 
-Add some stocks to your favorite list with \`stocks favorite add <symbols..>\``);
+Add some stocks to your favorites with \`stocks favorites add <symbols..>\``);
   }
 }
